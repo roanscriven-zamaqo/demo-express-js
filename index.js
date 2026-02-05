@@ -40,9 +40,11 @@ bot.command('ethereum', async ctx => {
   }
 });
 
-bot.launch()
-  .then(() => console.log("✅ Bot launched successfully!"))
-  .catch(err => console.error("❌ Bot launch failed:", err));
+expressApp.use(bot.webhookCallback('/secret-path'))
+bot.telegram.setWebhook('https://demo-express-js-lgax.ovh-test.ccdns.co/secret-path')
+// bot.launch()
+//  .then(() => console.log("✅ Bot launched successfully!"))
+//  .catch(err => console.error("❌ Bot launch failed:", err)); 
 
 expressApp.listen(port, () => {
   console.log(`Express server running on http://localhost:${port}`);
